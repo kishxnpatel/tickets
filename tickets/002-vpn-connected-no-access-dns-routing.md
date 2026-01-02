@@ -12,7 +12,7 @@ Typical internal dependencies: DNS suffix search, internal DNS servers, routes t
 
 ## Triage
 Step 1: Confirm what is not working. Check one internal hostname, one internal IP, and one public website. <br/>
-Step 2: Confirm the VPN tunnel is actually established. Check the VPN status in the client and confirm the assigned VPN adapter IP.
+Step 2: Confirm the VPN tunnel is actually established. Check the VPN status in the client and confirm the assigned VPN adapter IP. <br>
 Step 3: Determine if the failure is name resolution or routing. Test internal hostname versus internal IP.
 
 ## Diagnostics commands and logs
