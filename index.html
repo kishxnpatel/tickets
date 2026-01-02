@@ -16,6 +16,7 @@
       --accent:#0a66c2;
       --shadow: 0 10px 25px rgba(17,24,39,.08);
       --radius: 18px;
+      --codebg:#0b1220;
     }
 
     *{ box-sizing:border-box; }
@@ -28,35 +29,18 @@
       line-height: 1.55;
     }
 
-    /* HEADER mobile fix */
     header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
       align-items: flex-start;
     }
 
-    .logo{
-      flex: 0 0 44px;
-      width: 44px;
-      height: 44px;
-    }
-
-    .brand{
-      align-items: flex-start;
-    }
-
-    .brandText{
-      min-width: 0;
-    }
-
-    .brandText h1{
-      line-height: 1.1;
-    }
-
     @media (max-width: 520px){
-      header{
-        gap: 10px;
-      }
-
+      header{ gap: 10px; }
       header .btn{
         width: 100%;
         justify-content: center;
@@ -69,21 +53,17 @@
       padding: 28px 16px 64px;
     }
 
-    header{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
     .brand{
       display:flex;
       align-items:center;
       gap: 12px;
+      align-items: flex-start;
     }
 
     .logo{
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 10px;
       border: 1px solid var(--border);
       background: #fff;
@@ -93,18 +73,19 @@
       overflow:hidden;
       box-shadow: 0 6px 18px rgba(17,24,39,.06);
     }
-
     .logo svg{ width: 26px; height: 26px; }
 
     .brandText{
       display:flex;
       flex-direction:column;
       gap: 2px;
+      min-width: 0;
     }
     .brandText h1{
       margin:0;
       font-size: 22px;
       letter-spacing: .2px;
+      line-height: 1.1;
     }
     .brandText p{
       margin:0;
@@ -125,6 +106,7 @@
       transition: transform .08s ease, border-color .12s ease, background .12s ease;
       white-space: nowrap;
       font-weight: 600;
+      cursor: pointer;
     }
     .btn:hover{
       border-color: rgba(10,102,194,.35);
@@ -141,9 +123,7 @@
     }
     .btnPrimary:hover{ background: rgba(10,102,194,.14); }
 
-    .btnGhost{
-      background: transparent;
-    }
+    .btnGhost{ background: transparent; }
 
     .card{
       background: var(--card);
@@ -153,9 +133,7 @@
       overflow:hidden;
     }
 
-    .hero{
-      padding: 18px;
-    }
+    .hero{ padding: 18px; }
 
     .heroGrid{
       display:grid;
@@ -210,15 +188,12 @@
       box-shadow: 0 10px 25px rgba(17,24,39,.08);
     }
 
-    .previewBox{
-      padding: 14px;
-      border-top: 0;
-    }
+    .previewBox{ padding: 14px; }
 
     .codeCard{
       border: 1px solid var(--border);
       border-radius: 14px;
-      background: #0b1220;
+      background: var(--codebg);
       color: #e5e7eb;
       padding: 12px;
       overflow:auto;
@@ -239,9 +214,7 @@
       flex-wrap:wrap;
     }
 
-    .sections{
-      padding: 0 18px 18px;
-    }
+    .sections{ padding: 0 18px 18px; }
 
     .grid{
       display:grid;
@@ -256,27 +229,11 @@
       padding: 14px;
       background: #fff;
     }
-    .panel h3{
-      margin: 0 0 8px;
-      font-size: 16px;
-    }
-    .panel p{
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    ul{
-      margin: 8px 0 0;
-      padding-left: 18px;
-    }
-    li{ margin: 6px 0; }
+    .panel h3{ margin: 0 0 8px; font-size: 16px; }
+    .panel p{ margin: 0 0 10px; color: var(--muted); font-size: 14px; }
 
-    .split{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin-top: 14px;
-    }
+    ul{ margin: 8px 0 0; padding-left: 18px; }
+    li{ margin: 6px 0; }
 
     footer{
       margin-top: 14px;
@@ -296,7 +253,59 @@
     @media (min-width: 980px){
       .heroGrid{ grid-template-columns: 1.1fr .9fr; }
       .grid{ grid-template-columns: 1fr 1fr 1fr; }
-      .split{ grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Viewer */
+    .viewerWrap{ margin-top: 14px; display: none; }
+    .viewerWrap.show{ display: block; }
+
+    .viewerHeader{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .viewerTitle{ font-weight: 800; letter-spacing: .2px; }
+    .viewerMeta{ color: var(--muted); font-size: 13px; }
+
+    .viewerBody{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+      overflow:hidden;
+    }
+
+    /* Rendered markdown */
+    .md h1{ font-size: 22px; margin: 0 0 10px; }
+    .md h2{ font-size: 16px; margin: 16px 0 8px; }
+    .md h3{ font-size: 14px; margin: 14px 0 8px; }
+    .md p{ margin: 8px 0; color: var(--text); }
+    .md ul{ margin: 8px 0; }
+    .md ol{ margin: 8px 0; }
+
+    .md code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      background: rgba(17,24,39,.06);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+
+    .md pre{
+      background: var(--codebg);
+      color: #e5e7eb;
+      border-radius: 14px;
+      padding: 12px;
+      overflow:auto;
+      border: 1px solid rgba(229,231,235,.2);
+    }
+    .md pre code{
+      background: transparent;
+      padding: 0;
+      color: inherit;
     }
   </style>
 </head>
@@ -306,7 +315,6 @@
     <header>
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <!-- Inline icon so you do not need images -->
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M7 3h7l3 3v15a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="#0a66c2" stroke-width="1.6"/>
             <path d="M14 3v4a1 1 0 0 0 1 1h4" stroke="#0a66c2" stroke-width="1.6"/>
@@ -314,8 +322,8 @@
           </svg>
         </div>
         <div class="brandText">
-          <h1>Tickets</h1>
-          <p>IT Support Ticket Library with commands and KB articles</p>
+          <h1>IT Support Ticket Library</h1>
+          <p>Tickets and KB articles with commands and diagnostics</p>
         </div>
       </div>
 
@@ -337,28 +345,23 @@
               <span class="pill">Networking</span>
             </div>
 
-            <h2>Daily tickets written like real support work.</h2>
+            <h2>Open any ticket and read it here.</h2>
             <p>
-              Technical ticket write ups with diagnostics, commands, and clear resolution steps.
-              Each entry is structured for service desk and IT support workflows.
+              Click a ticket or KB item and it will render inside this page.
+              No raw Markdown pages.
             </p>
 
             <div class="ctaRow">
-              <a class="btn btnPrimary" href="#tickets">View Tickets</a>
-              <a class="btn btnGhost" href="#kb">View Knowledge Base</a>
-
-              <!-- Optional: update this repo link after you rename the repo -->
-              <a class="btn" href="https://github.com/kishxnpatel/tickets" target="_blank" rel="noopener">
-                View Repo
-              </a>
+              <a class="btn btnPrimary" href="#tickets">Tickets</a>
+              <a class="btn btnGhost" href="#kb">Knowledge Base</a>
+              <a class="btn" href="https://github.com/kishxnpatel/it-support-ticket-library" target="_blank" rel="noopener">Repo</a>
             </div>
           </div>
 
-          <!-- Preview panel -->
           <div class="preview">
             <div class="previewBox">
-              <pre class="codeCard">Get-ADUser -Identity &lt;username&gt; -Properties LockedOut,BadPwdCount,LastBadPasswordAttempt |
-  Select-Object LockedOut,BadPwdCount,LastBadPasswordAttempt
+              <pre class="codeCard">Get-ADUser -Identity &lt;username&gt; -Properties LockedOut,BadPwdCount,LastBadPasswordAttempt
+Unlock-ADAccount -Identity &lt;username&gt;
 
 DISM /Online /Cleanup-Image /RestoreHealth
 sfc /scannow
@@ -376,23 +379,23 @@ nslookup &lt;internal-hostname&gt;</pre>
 
       <div class="sections">
         <div class="grid">
-          <div class="panel">
+          <div class="panel" id="tickets">
             <h3>Tickets</h3>
-            <p>Common issues with practical diagnostics.</p>
+            <p>Click to open inside this page.</p>
             <ul>
-              <li><a href="./tkt/001-ad-account-lockout.md">TKT 001 AD Account Lockout</a></li>
-              <li><a href="./tkt/002-vpn-connected-no-access-dns-routing.md">TKT 002 VPN Connected No Access DNS and Routing</a></li>
-              <li><a href="./tkt/003-windows-update-failing-dism-sfc.md">TKT 003 Windows Update Failing DISM and SFC</a></li>
+              <li><a class="mdLink" href="tickets/001-ad-account-lockout.md">TKT 001 AD Account Lockout</a></li>
+              <li><a class="mdLink" href="tickets/002-vpn-connected-no-access-dns-routing.md">TKT 002 VPN Connected No Access DNS and Routing</a></li>
+              <li><a class="mdLink" href="tickets/003-windows-update-failing-dism-sfc.md">TKT 003 Windows Update Failing DISM and SFC</a></li>
             </ul>
           </div>
 
           <div class="panel" id="kb">
             <h3>Knowledge Base</h3>
-            <p>KB style articles that support ticket resolution.</p>
+            <p>Standard steps used in tickets.</p>
             <ul>
-              <li><a href="./kb/kb-ad-account-lockout.md">KB AD Account Lockout</a></li>
-              <li><a href="./kb/kb-vpn-connected-no-access.md">KB VPN Connected No Access</a></li>
-              <li><a href="./kb/kb-windows-update-repair.md">KB Windows Update Repair</a></li>
+              <li><a class="mdLink" href="kb/kb-ad-account-lockout.md">KB AD Account Lockout</a></li>
+              <li><a class="mdLink" href="kb/kb-vpn-connected-no-access.md">KB VPN Connected No Access</a></li>
+              <li><a class="mdLink" href="kb/kb-windows-update-repair.md">KB Windows Update Repair</a></li>
             </ul>
           </div>
 
@@ -407,38 +410,102 @@ nslookup &lt;internal-hostname&gt;</pre>
           </div>
         </div>
 
-        <div class="split" id="tickets">
+        <div class="viewerWrap" id="viewer">
           <div class="panel">
-            <h3>How to use this</h3>
-            <p>Open a ticket, follow the diagnostics section, then review resolution and validation.</p>
-            <ul>
-              <li>Copy commands into your lab environment</li>
-              <li>Replace placeholders like &lt;username&gt; and &lt;internal-hostname&gt;</li>
-              <li>Use the KB articles for standard steps</li>
-            </ul>
-          </div>
+            <div class="viewerHeader">
+              <div>
+                <div class="viewerTitle" id="viewerTitle">Document</div>
+                <div class="viewerMeta" id="viewerMeta"></div>
+              </div>
 
-          <div class="panel">
-            <h3>Quick links</h3>
-            <p>Useful pages for reviewers.</p>
-            <ul>
-              <li><a href="https://kishxnpatel.com/" rel="noopener">Portfolio home</a></li>
-              <li><a href="https://kishxnpatel.com/quickit/" rel="noopener">QuickIT</a></li>
-              <li><a href="https://github.com/kishxnpatel/tickets" target="_blank" rel="noopener">Tickets repo</a></li>
-            </ul>
+              <div class="ctaRow">
+                <button class="btn btnGhost" id="closeViewerBtn" type="button">Close</button>
+                <a class="btn" id="openRawBtn" href="#" target="_blank" rel="noopener">Open file</a>
+              </div>
+            </div>
+
+            <div class="viewerBody">
+              <div class="md" id="viewerBody">
+                Select a ticket or KB to view it.
+              </div>
+            </div>
           </div>
         </div>
 
         <footer>
           <span>© 2026 Kishan Patel • Tickets</span>
           <span>
-            Home: <a href="https://kishxnpatel.com/tickets/" rel="noopener">/tickets/</a>
+            Home: <a href="./" rel="noopener">/</a>
             &nbsp;•&nbsp;
-            Portfolio: <a href="https://kishxnpatel.com/" rel="noopener">/</a>
+            Portfolio: <a href="https://kishxnpatel.com/" rel="noopener">kishxnpatel.com</a>
           </span>
         </footer>
       </div>
     </section>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    const viewer = document.getElementById("viewer");
+    const viewerBody = document.getElementById("viewerBody");
+    const viewerTitle = document.getElementById("viewerTitle");
+    const viewerMeta = document.getElementById("viewerMeta");
+    const openRawBtn = document.getElementById("openRawBtn");
+    const closeViewerBtn = document.getElementById("closeViewerBtn");
+
+    function titleFromPath(path){
+      const file = (path.split("/").pop() || path).replace(".md","");
+      return file.replace(/[-_]/g," ");
+    }
+
+    async function loadMarkdown(path){
+      viewer.classList.add("show");
+      viewerBody.textContent = "Loading...";
+      viewerTitle.textContent = titleFromPath(path);
+      viewerMeta.textContent = path;
+      openRawBtn.href = path;
+
+      try{
+        const res = await fetch(path, { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        const md = await res.text();
+        const html = marked.parse(md, { mangle: false, headerIds: false });
+        viewerBody.innerHTML = html;
+        viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+      }catch(e){
+        viewerBody.innerHTML = "<p>Could not load the file. Check the path and file name.</p>";
+      }
+    }
+
+    function handleHash(){
+      const h = decodeURIComponent(location.hash || "");
+      if(!h) return;
+      const path = h.startsWith("#") ? h.slice(1) : h;
+      if(path.endsWith(".md")){
+        loadMarkdown(path);
+      }
+    }
+
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("a.mdLink");
+      if(!a) return;
+      e.preventDefault();
+      const path = a.getAttribute("href");
+      location.hash = encodeURIComponent(path);
+    });
+
+    closeViewerBtn.addEventListener("click", () => {
+      viewer.classList.remove("show");
+      viewerBody.textContent = "Select a ticket or KB to view it.";
+      viewerTitle.textContent = "Document";
+      viewerMeta.textContent = "";
+      openRawBtn.href = "#";
+      history.replaceState(null, "", location.pathname);
+    });
+
+    window.addEventListener("hashchange", handleHash);
+    handleHash();
+  </script>
 </body>
 </html>
